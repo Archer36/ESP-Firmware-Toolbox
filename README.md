@@ -5,7 +5,7 @@ This toolkit is a collection of tools that can be used to dump, reverse-engineer
 Tools:
 - [mitmproxy](https://mitmproxy.org/) (installed via pip requirement)
 - [esptool](https://github.com/espressif/esptool) (installed via pip requirement)
-- [esp32knife](https://github.com/BlackVS/esp32knife) by [BlackVS](https://github.com/BlackVS)
+- A [fork](https://github.com/wilco375/esp32knife) of [esp32knife](https://github.com/BlackVS/esp32knife) by [BlackVS](https://github.com/BlackVS) and me
 - [ESP-Firmware-Patcher](https://github.com/wilco375/ESP-Firmware-Patcher) by me
 
 Ghidra scripts:

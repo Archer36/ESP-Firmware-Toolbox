@@ -1,6 +1,6 @@
 [submodule "esp32knife"]
 	path = esp32knife
-	url = https://github.com/BlackVS/esp32knife.git
+	url = git@github.com:wilco375/esp32knife.git
 [submodule "ESP-Firmware-Patcher"]
 	path = ESP-Firmware-Patcher
 	url = https://github.com/wilco375/ESP-Firmware-Patcher
