@@ -86,6 +86,22 @@ Simply drag and drop the ELF files in Ghidra, and double click it. Then:
 4. Run the auto analysis
 5. Run the IdentifyLoggingStrings.java script
 
+### ESP32-S3 ROM labels
+
+`ESP32_ROM_LABELS.txt` is only suitable for the original ESP32. For an
+ESP32-S3, generate a matching map from Espressif's official ESP-IDF linker
+script:
+
+```bash
+python3 tools/download_esp32s3_rom_labels.py
+```
+
+The default source is the ESP-IDF `v5.5.4` tag. Pass `--idf-ref` to select a
+different tag, branch, or commit. The output uses the three-column
+`name address l` format expected by the external `ImportSymbolsScript.py`
+referenced above; that importer is not bundled with current Ghidra or this
+toolbox.
+
 ### Patching the firmware
 Edit `SIG_FIND_REPLACE` in `ESP-Firmware-Patcher/main.py` with the binary code to search for and repace. Then, run the patcher:
 ```bash
