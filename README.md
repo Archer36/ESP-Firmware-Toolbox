@@ -35,12 +35,12 @@ pip install -r requirements.txt
 ```
 
 ### Ghidra scripts
-1. Open a Ghidra project
+1. Launch Ghidra through `support/pyghidraRun`, then open a Ghidra project. The bundled symbol importer and SVD loader require PyGhidra.
 2. Go to _Window_ -> _Script Manager_
 3. Click _Manage Script Directories_ (list icon at the top right)
 4. Click _Display file chooser to add bundles to list_ (green plus at the top right)
 5. Select the `Ghidra-Scripts/IdentifyLoggingStrings` directory
-6. Repeat step 4 and 5 for the `Ghidra-Scripts/SVD-Loader-Ghidra` directory
+6. Repeat step 4 and 5 for the `Ghidra-Scripts/ImportSymbols` and `Ghidra-Scripts/SVD-Loader-Ghidra` directories
 
 ## Usage
 ### Inspect ESP32 behavior
@@ -81,7 +81,7 @@ Factory and OTA (if available) partitions are most interesting.
 
 Simply drag and drop the ELF files in Ghidra, and double click it. Then:
 1. Cancel auto analysis
-2. Run the ImportSymbolsScript.py script, and select `Ghidra-Files/ESP-ROM-Labels/ESP32_ROM_LABELS.txt`
+2. Run the ImportSymbolsScript.py script, and select the ROM-label file for your chip. Use `Ghidra-Files/ESP-ROM-Labels/ESP32_ROM_LABELS.txt` for the original ESP32 or `Ghidra-Files/ESP32S3_ROM_LABELS.txt` for the ESP32-S3.
 3. Run the SVD-Loader.py script, and select `Ghidra-Files/ESP-SVD/svd/esp32.svd`
 4. Run the auto analysis
 5. Run the IdentifyLoggingStrings.java script
@@ -98,9 +98,8 @@ python3 tools/download_esp32s3_rom_labels.py
 
 The default source is the ESP-IDF `v5.5.4` tag. Pass `--idf-ref` to select a
 different tag, branch, or commit. The output uses the three-column
-`name address l` format expected by the external `ImportSymbolsScript.py`
-referenced above; that importer is not bundled with current Ghidra or this
-toolbox.
+`name address l` format consumed by this toolbox's PyGhidra
+`ImportSymbolsScript.py`.
 
 ### Patching the firmware
 Edit `SIG_FIND_REPLACE` in `ESP-Firmware-Patcher/main.py` with the binary code to search for and repace. Then, run the patcher:
